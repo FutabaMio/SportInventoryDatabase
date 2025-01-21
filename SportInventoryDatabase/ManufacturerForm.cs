@@ -64,7 +64,7 @@ namespace SportInventoryDatabase
                                 product.Country = form.Country;
 
                                 // Сохраняем изменения в базе данных
-                                //context.SaveChanges();
+                                context.SaveChanges();
                             }
                         }
 

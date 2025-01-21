@@ -59,7 +59,7 @@ namespace SportInventoryDatabase
                         Country = countryTextBox.Text,
                     };
 
-                    db.Manufacturers.Add(newUser);
+                    //db.Manufacturers.Add(newUser);
                     
                 }
 
