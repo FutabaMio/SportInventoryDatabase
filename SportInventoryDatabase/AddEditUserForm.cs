@@ -66,7 +66,7 @@ namespace SportInventoryDatabase
                         Password = txtPassword.Text,
                         Age = int.TryParse(txtAge.Text, out int age) ? age : 0
                     };
-                    //db.Users.Add(newUser);
+                    
                 }
                
                 db.SaveChanges(); // Сохраняем изменения в базу данных

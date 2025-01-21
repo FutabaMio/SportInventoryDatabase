@@ -48,9 +48,26 @@ namespace SportInventoryDatabase
         // Обработчик для кнопки "Добавить товар"
         private void AddButton_Click(object sender, EventArgs e)
         {
-            var addEditForm = new AddEditProductForm();
-            addEditForm.ShowDialog();
-            LoadData();  // Перезагружаем данные после добавления
+            using (var form = new AddEditProductForm())
+            {
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    using (var context = new ApplicationContext())
+                    {
+                        // Добавляем нового пользователя
+                        context.Goods.Add(new Models.Goods
+                        {
+                            Name = form.Name,
+                            Category = form.Category,
+                            Count = form.Count,
+                            Price = form.Price,
+                        });
+                        context.SaveChanges();
+                    }
+
+                    LoadData(); // Обновляем данные
+                }
+            }
         }
 
         private void EditButton_Click_1(object sender, EventArgs e)

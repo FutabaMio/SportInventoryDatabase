@@ -66,6 +66,7 @@ namespace SportInventoryDatabase
                         _currentProduct.Count = int.Parse(CountNumericUpDown.Text.Trim());
                         _currentProduct.Price = decimal.Parse(priceTextBox.Text.Trim());
                         db.Goods.Update(_currentProduct);
+                        db.SaveChanges();
                     }
                     else if (_currentProduct == null)// Если создаём нового пользователя
                     {
@@ -76,10 +77,11 @@ namespace SportInventoryDatabase
                             Count = int.Parse(CountNumericUpDown.Text.Trim()),
                             Price = decimal.Parse(priceTextBox.Text.Trim())
                         };
-                        //db.Users.Add(newUser);
+                        //db.Goods.Add(newUser);
+                       
                     }
-
-                    db.SaveChanges();  // Сохраняем изменения в базе данных
+                    db.SaveChanges();
+                    //db.SaveChanges();  // Сохраняем изменения в базе данных
                     MessageBox.Show("Данные успешно сохранены!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.DialogResult = DialogResult.OK;
                     Close();  // Закрываем форму

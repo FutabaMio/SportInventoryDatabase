@@ -40,9 +40,24 @@ namespace SportInventoryDatabase
 
         private void BTN_add_Click(object sender, EventArgs e)
         {
-            var addEditForm = new AddEditStockForm();
-            addEditForm.ShowDialog();
-            LoadData();  // Перезагружаем данные после добавления
+            using (var form = new AddEditStockForm())
+            {
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    using (var context = new ApplicationContext())
+                    {
+                        // Добавляем нового пользователя
+                        context.Stocks.Add(new Models.Stocks
+                        {
+                            Name = form.Name,
+                            City = form.City,
+                        });
+                        context.SaveChanges();
+                    }
+
+                    LoadData(); // Обновляем данные
+                }
+            }
         }
 
         private void BTN_edit_Click(object sender, EventArgs e)

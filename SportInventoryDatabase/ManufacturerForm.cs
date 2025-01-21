@@ -39,9 +39,24 @@ namespace SportInventoryDatabase
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            var addEditForm = new AddEditManufacturerForm();
-            addEditForm.ShowDialog();
-            LoadData();  // Перезагружаем данные после добавления
+            using (var form = new AddEditManufacturerForm())
+            {
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    using (var context = new ApplicationContext())
+                    {
+                        // Добавляем нового пользователя
+                        context.Manufacturers.Add(new Models.Manufacturer
+                        {
+                            Name = form.Name,
+                            Country = form.Country,
+                        });
+                        context.SaveChanges();
+                    }
+
+                    LoadData(); // Обновляем данные
+                }
+            }
         }
 
         private void EditButton_Click(object sender, EventArgs e)

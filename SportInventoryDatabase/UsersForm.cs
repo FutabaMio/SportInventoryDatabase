@@ -83,8 +83,10 @@ namespace SportInventoryDatabase
                             {
                                 user.FirstName = form.FirstName;
                                 user.SecondName = form.SecondName;
+                                user.Login = form.Login;
+                                user.Password = form.Password;
                                 user.Age = form.Age;
-                                //context.Update(user);
+                                context.Update(user);
                                 context.SaveChanges();
                             }
                         }
