@@ -65,7 +65,7 @@ namespace SportInventoryDatabase
                                 product.Name = form.Name;
                                 product.City = form.City;
                                 // Сохраняем изменения в базе данных
-                                //context.SaveChanges();
+                                context.SaveChanges();
                             }
                         }
 
@@ -77,6 +77,7 @@ namespace SportInventoryDatabase
             {
                 MessageBox.Show("Выберите товар для редактирования.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+            LoadData();
         }
 
         private void BTN_delete_Click(object sender, EventArgs e)
