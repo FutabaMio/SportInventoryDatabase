@@ -81,35 +81,18 @@ namespace SportInventoryDatabase
                             }
                         }
 
-                        LoadGoods(); // Обновляем данные на экране
-                    }
+                         // Обновляем данные на экране
+                    } LoadData();
                 }
-            }
+            } 
             else
             {
                 MessageBox.Show("Выберите товар для редактирования.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+            LoadData();
         }
 
-        private void LoadGoods()
-        {
-            using (var context = new ApplicationContext())
-            {
-                // Получение списка пользователей из базы данных
-                var users = context.Goods
-                    .Select(u => new
-                    {
-                        u.Id,
-                        u.Name,
-                        u.Category,
-                        u.Count,
-                        u.Price
-                    })
-                    .ToList();
-
-                goodsDataGridView.DataSource = users; // Установка источника данных
-            }
-        }
+        
 
         private void DeleteButton_Click_1(object sender, EventArgs e)
         {
@@ -131,7 +114,7 @@ namespace SportInventoryDatabase
                         }
                     }
 
-                    LoadGoods(); // Обновляем данные
+                    LoadData(); // Обновляем данные
                 }
             }
             else

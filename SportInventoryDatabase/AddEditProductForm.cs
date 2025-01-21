@@ -14,8 +14,8 @@ namespace SportInventoryDatabase
 {
     public partial class AddEditProductForm : Form
     {
+        private Goods _currentProduct { get; set; }
         private readonly ApplicationContext _context;
-        private readonly Goods _currentProduct;
         private int? _productId;
         public AddEditProductForm(int? productId = null)
         {
@@ -35,17 +35,17 @@ namespace SportInventoryDatabase
                 CategoryTextBox.Text = _currentProduct.Category;
                 //ManufacturerTextBox.Text = _currentProduct.Manufacturer?.Name;
                 CountNumericUpDown.Value = _currentProduct.Count;
-                PriceNumericUpDown.Value = _currentProduct.Price;
+                priceTextBox.Text = _currentProduct.Price.ToString();
             }
         }
         public string Name => NameTextBox.Text.Trim();
         public string Category => CategoryTextBox.Text.Trim();
         public int Count => int.Parse(CountNumericUpDown.Text.Trim());
-        public decimal Price => decimal.Parse(PriceNumericUpDown.Text.Trim());
+        public decimal Price => decimal.Parse(priceTextBox.Text.Trim());
 
         private void OkButton_Click(object sender, EventArgs e)
         {
-
+            
             using (var db = new ApplicationContext())
             {
                 try
@@ -59,32 +59,29 @@ namespace SportInventoryDatabase
                         return;
                     }
 
-                    if (_currentProduct == null)
+                    if (_currentProduct != null)
                     {
-                        var newProduct = new Goods
-                        {
-                            Name = NameTextBox.Text.Trim(),
-                            Category = CategoryTextBox.Text.Trim(),
-                            //Manufacturer = new Manufacturer { Name = ManufacturerTextBox.Text.Trim() },
-                            Count = (int)CountNumericUpDown.Value,
-                            Price = (decimal)PriceNumericUpDown.Value
-                        };
-
-                        db.Goods.Add(newProduct);  // Добавляем новый товар
+                        _currentProduct.Name = NameTextBox.Text;
+                        _currentProduct.Category = CategoryTextBox.Text;
+                        _currentProduct.Count = int.Parse(CountNumericUpDown.Text.Trim());
+                        _currentProduct.Price = decimal.Parse(priceTextBox.Text.Trim());
+                        db.Goods.Update(_currentProduct);
                     }
-                    else
+                    else if (_currentProduct == null)// Если создаём нового пользователя
                     {
-                        _currentProduct.Name = NameTextBox.Text.Trim();
-                        _currentProduct.Category = CategoryTextBox.Text.Trim();
-                        //_currentProduct.Manufacturer.Name = ManufacturerTextBox.Text.Trim();
-                        _currentProduct.Count = (int)CountNumericUpDown.Value;
-                        _currentProduct.Price = (decimal)PriceNumericUpDown.Value;
-
-                        db.Goods.Update(_currentProduct);  // Обновляем существующий товар
+                        var newUser = new Goods
+                        {
+                            Name = NameTextBox.Text,
+                            Category = CategoryTextBox.Text,
+                            Count = int.Parse(CountNumericUpDown.Text.Trim()),
+                            Price = decimal.Parse(priceTextBox.Text.Trim())
+                        };
+                        //db.Users.Add(newUser);
                     }
 
                     db.SaveChanges();  // Сохраняем изменения в базе данных
                     MessageBox.Show("Данные успешно сохранены!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.DialogResult = DialogResult.OK;
                     Close();  // Закрываем форму
                 }
                 catch (Exception ex)
@@ -104,7 +101,7 @@ namespace SportInventoryDatabase
                     NameTextBox.Text = user.Name;
                     CategoryTextBox.Text = user.Category;
                     CountNumericUpDown.Text = user.Count.ToString();
-                    PriceNumericUpDown.Text = user.Price.ToString();
+                    priceTextBox.Text = user.Price.ToString();
                 }
             }
         }

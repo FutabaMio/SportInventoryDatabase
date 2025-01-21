@@ -36,16 +36,16 @@
             label4 = new Label();
             CountNumericUpDown = new NumericUpDown();
             label5 = new Label();
-            PriceNumericUpDown = new NumericUpDown();
+            priceTextBox = new TextBox();
             ((System.ComponentModel.ISupportInitialize)CountNumericUpDown).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)PriceNumericUpDown).BeginInit();
             SuspendLayout();
             // 
             // OkButton
             // 
-            OkButton.Location = new Point(192, 409);
+            OkButton.Location = new Point(168, 307);
+            OkButton.Margin = new Padding(3, 2, 3, 2);
             OkButton.Name = "OkButton";
-            OkButton.Size = new Size(94, 29);
+            OkButton.Size = new Size(82, 22);
             OkButton.TabIndex = 0;
             OkButton.Text = "OK";
             OkButton.UseVisualStyleBackColor = true;
@@ -54,73 +54,76 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(12, 38);
+            label1.Location = new Point(10, 28);
             label1.Name = "label1";
-            label1.Size = new Size(77, 20);
+            label1.Size = new Size(59, 15);
             label1.TabIndex = 1;
             label1.Text = "Название";
             // 
             // NameTextBox
             // 
-            NameTextBox.Location = new Point(12, 61);
+            NameTextBox.Location = new Point(10, 46);
+            NameTextBox.Margin = new Padding(3, 2, 3, 2);
             NameTextBox.Name = "NameTextBox";
-            NameTextBox.Size = new Size(466, 27);
+            NameTextBox.Size = new Size(408, 23);
             NameTextBox.TabIndex = 2;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(12, 107);
+            label2.Location = new Point(10, 80);
             label2.Name = "label2";
-            label2.Size = new Size(81, 20);
+            label2.Size = new Size(63, 15);
             label2.TabIndex = 3;
             label2.Text = "Категория";
             // 
             // CategoryTextBox
             // 
-            CategoryTextBox.Location = new Point(12, 130);
+            CategoryTextBox.Location = new Point(10, 98);
+            CategoryTextBox.Margin = new Padding(3, 2, 3, 2);
             CategoryTextBox.Name = "CategoryTextBox";
-            CategoryTextBox.Size = new Size(466, 27);
+            CategoryTextBox.Size = new Size(408, 23);
             CategoryTextBox.TabIndex = 4;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(12, 179);
+            label4.Location = new Point(10, 134);
             label4.Name = "label4";
-            label4.Size = new Size(90, 20);
+            label4.Size = new Size(72, 15);
             label4.TabIndex = 7;
             label4.Text = "Количество";
             // 
             // CountNumericUpDown
             // 
-            CountNumericUpDown.Location = new Point(12, 202);
+            CountNumericUpDown.Location = new Point(10, 152);
+            CountNumericUpDown.Margin = new Padding(3, 2, 3, 2);
             CountNumericUpDown.Name = "CountNumericUpDown";
-            CountNumericUpDown.Size = new Size(150, 27);
+            CountNumericUpDown.Size = new Size(131, 23);
             CountNumericUpDown.TabIndex = 9;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(12, 249);
+            label5.Location = new Point(10, 187);
             label5.Name = "label5";
-            label5.Size = new Size(45, 20);
+            label5.Size = new Size(35, 15);
             label5.TabIndex = 10;
             label5.Text = "Цена";
             // 
-            // PriceNumericUpDown
+            // priceTextBox
             // 
-            PriceNumericUpDown.Location = new Point(12, 272);
-            PriceNumericUpDown.Name = "PriceNumericUpDown";
-            PriceNumericUpDown.Size = new Size(150, 27);
-            PriceNumericUpDown.TabIndex = 11;
+            priceTextBox.Location = new Point(12, 205);
+            priceTextBox.Name = "priceTextBox";
+            priceTextBox.Size = new Size(129, 23);
+            priceTextBox.TabIndex = 11;
             // 
             // AddEditProductForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(490, 450);
-            Controls.Add(PriceNumericUpDown);
+            ClientSize = new Size(429, 338);
+            Controls.Add(priceTextBox);
             Controls.Add(label5);
             Controls.Add(CountNumericUpDown);
             Controls.Add(label4);
@@ -129,11 +132,11 @@
             Controls.Add(NameTextBox);
             Controls.Add(label1);
             Controls.Add(OkButton);
+            Margin = new Padding(3, 2, 3, 2);
             //Name = "AddEditProductForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Информация о продукте";
             ((System.ComponentModel.ISupportInitialize)CountNumericUpDown).EndInit();
-            ((System.ComponentModel.ISupportInitialize)PriceNumericUpDown).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -148,6 +151,6 @@
         private Label label4;
         private NumericUpDown CountNumericUpDown;
         private Label label5;
-        private NumericUpDown PriceNumericUpDown;
+        private TextBox priceTextBox;
     }
 }
