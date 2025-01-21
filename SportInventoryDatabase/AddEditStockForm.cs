@@ -58,7 +58,7 @@ namespace SportInventoryDatabase
                     };
 
 
-                    //db.Stocks.Add(newUser);
+                    db.Stocks.Add(newUser);
                     db.SaveChanges();
                 }
 

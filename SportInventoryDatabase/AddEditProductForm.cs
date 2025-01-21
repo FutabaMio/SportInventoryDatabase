@@ -70,7 +70,7 @@ namespace SportInventoryDatabase
                             Price = (decimal)PriceNumericUpDown.Value
                         };
 
-                       // db.Goods.Add(newProduct);  // Добавляем новый товар
+                        db.Goods.Add(newProduct);  // Добавляем новый товар
                     }
                     else
                     {
