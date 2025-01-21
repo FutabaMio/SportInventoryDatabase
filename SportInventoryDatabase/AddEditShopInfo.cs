@@ -52,7 +52,7 @@ namespace SportInventoryDatabase
                         Dealer = TB_dealer.Text
                     };
 
-                    db.Shops.Add(newUser);
+                    //db.Shops.Add(newUser);
                     db.SaveChanges();
                 }
 
